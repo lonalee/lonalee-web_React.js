@@ -12,3 +12,334 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+/* ------------------ index.ejs -------*/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #58666e;
+  background-color: #f0f3f4;
+}
+
+li {
+  list-style: none;
+}
+a {
+  text-decoration: none;
+}
+
+header {
+  width: 100%;
+  height: 100px;
+  background-color: #eb4d4b;
+  font-weight: 200;
+  z-index: 2000;
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.05), 0 1px 0 rgba(0, 0, 0, 0.05);
+  position: fixed;  /******************** sticky 하는 방법!    */
+  top: 0;           /******************** sticky 위치!        */
+}
+nav {
+  float: right;
+  font-size: 1.3rem;
+  margin: 37px 50px;
+}
+
+.nav-items li {
+  display: inline-block;
+  margin: 0 20px;
+}
+.nav-items a {
+  color: wheat;
+}
+.nav-items a:hover {
+  color: #dff9fb;
+  border-bottom: 3px solid #dff9fb;
+  transition: border-bottom 0.2s;
+}
+.logo span {
+  font-size: 2em;
+  margin: 25px 0 25px 30px;
+  display: inline-block;
+  font-weight: 400;
+}
+.clearfix {zoom: 1;}
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: block;
+  height: 0;
+  visibility: hidden;
+}
+/* --------------------wrap-------------------- */
+#content-wrap {
+  margin-top: 100px;
+}
+
+aside {
+  float: left;
+  height: 100%;
+  background-color: pink;
+  width: 20%;
+  font-size: 2em;
+  font-weight: 200;
+  text-align: center;
+  letter-spacing: 2px;
+  position: fixed;
+  top: 100px;
+  padding-top: 50px;
+  box-shadow: 10px 0 8px rgb(243, 208, 213);
+}
+aside p {
+  font-weight: 300;
+  text-align: center;
+  margin-left: 10px;
+}
+aside ul {
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+aside li {
+  margin-top: 10px;
+}
+aside li:hover {
+  background-color: #f7f1e3;
+  transition: background-color 0.3s;
+}
+aside ul li.active {
+  background-color: #f7f1e3;
+}
+/* --------------------section-------------------- */
+section {
+  float: right;
+}
+
+
+/* --------------------footer-------------------- */
+footer {
+  position: fixed;
+  bottom: 0;
+  margin-left: 20%;
+}
+
+/* ----signup----- */
+.col {
+  width: 88px;
+  display: inline-block;
+
+}
+.signup-container {
+  border: 1px solid black;
+  width: 60%;
+  margin: 150px auto 0 auto;
+  padding: 20px 50px;
+  position: relative;
+}
+div.row {
+  margin-bottom:10px;
+}
+.dropdown {
+  position: absolute;
+  cursor: pointer;
+}
+/* -------------- select mobile provider box---------------- */
+.select-mobile {
+  top: 0;
+  left: 113px;
+}
+.prov-box-container {
+  display: inline-block;
+  width: 128px;
+  position: relative;
+  padding-bottom: 5px;
+  margin-right: 33px;
+}
+.provider-box {
+  width: 128px;
+  display: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  position: absolute;
+  text-align: center;
+  background-color: aqua;
+}
+.provider {
+}
+.provider:hover {
+  background: rgb(82, 82, 126);
+}
+/* -------------- select email box---------------- */
+.select-email {
+  left: 110px;
+  top: 0;
+}
+.email-box-container {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 5px;
+}
+.email-domain-box {
+  position: absolute;
+  display: none;
+  text-align: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  background-color: aqua;
+  width: 128px;
+}
+.email-domain-box > li:hover {
+  background: rgb(82, 82, 126);
+}
+
+/* -------------- select birthday box---------------- */
+.select-birth1 {
+  left: 252px;
+}
+.select-birth2 {
+  left: 405px;
+}
+.select-birth3 {
+  left: 559px;
+}
+.birth ul {
+  position: absolute;
+  margin: 0;
+  display: none;
+  list-style: none;
+  height: 100px;
+  overflow: scroll;
+  width: 128px;
+  padding: 0;
+  text-align: center;
+  background-color: aqua;
+}
+.birth div {
+  display: inline-block;
+}
+/* ------------signup btn-------------- */
+
+.signup {
+  text-align: center;
+  margin-top: 20px;
+}
+
+/* ------------img carousel-------------- */
+
+
+.carousel-container {
+  width: 898px;
+  height: 250px;
+  margin: 0 auto;
+  border: 1px solid yellow;
+  position: relative;
+  overflow: hidden;
+  padding: 10px 20px;
+}
+
+.meal-carousel {
+  list-style: none;
+  width: 302.5px;
+  float: left;
+  background-color: #000;
+  overflow: hidden;
+}
+.meal-carousel img:hover {
+  opacity: 1;
+  transform: scale(1.031);
+}
+.meals-carousel li {
+  list-style: none;
+}
+
+.meal-carousel img {
+  width: 100%;
+  height: 25%;
+  opacity: 0.5;
+  transform: scale(1.2);
+  transition: transform 0.5s, opacity 0.5s;
+}
+.carousel-box {
+  width: 5000px;
+  height: 250px;
+  position: absolute;
+  transform: translateX(-937px);
+}
+
+.btn2 {
+  position: absolute;
+  height: 228px;
+  font-size: 200%;
+  background-color: white;
+  color: orange;
+  border: white;
+  /* top: 947px; */
+  cursor: pointer;
+}
+.btn-left {
+  left: 0;
+  /* margin-left: 250px; */
+}
+.btn-right {
+  right: 0;
+  /* margin-right: 250px; */
+}
+.move-right {
+  transform: translateX(-886px);
+  transition: transform 1s;
+}
+
+/* ---------End of img carousel---------- */
+
+
+/* ------------------- game box ----------------------- */
+ol, ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square {
+  background: #fff;
+  border: 1px solid #999;
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 34px;
+  height: 34px;
+  margin-right: -1px;
+  margin-top: -1px;
+  padding: 0;
+  text-align: center;
+  width: 34px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
+
+.game-info {
+  margin-left: 20px;
+}
