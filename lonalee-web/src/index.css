@@ -114,8 +114,8 @@ aside ul li.active {
   background-color: #f7f1e3;
 }
 /* --------------------section-------------------- */
-section {
-  float: right;
+section .game-board {
+  margin: 50px 0 0 300px;
 }
 
 
