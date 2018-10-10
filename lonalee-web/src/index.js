@@ -201,7 +201,7 @@ class Mytrial extends React.Component {
           onChange={this.handleChange}></input>
           <button>Let me know</button>
         </form>
-        <LessonList list={this.state.list} />>
+        <LessonList list={this.state.list} />
       </div>
     );
   };
@@ -228,9 +228,9 @@ class Mytrial extends React.Component {
 class LessonList extends React.Component {
   render() {
   return(
-    <ul>
+    <ul className="list">
       {this.props.list.map(list => (
-        <li key={list.id}>{list.content}</li>
+        <li className="content" key={list.id}>{list.content}</li>
       ))}
     </ul>
   );

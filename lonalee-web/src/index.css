@@ -119,19 +119,57 @@ section .game-board {
 }
 
 section #mytrial {
-  margin: 100px 0 0 300px;
+  margin: 10% 0 0 40%;
+  /* background-color: #a8c2d1; */
+
+}
+
+section .wrapper {
+  width: 60%;
+  height: 300px;
 }
 
 section #mytrial input {
-  width: 400px;
+  background-color: #20526e;
   height: 50px;
   display: block;
+  margin: 10px auto;
+  color: wheat;
+  padding: 0 10px;
+  font-size: 1.2em;
+  width: 70%;
+
 }
 
 section #mytrial label {
+  background-color: #03263a;
   display: block;
+  text-align: center;
+  font-size: 2em;
+  height: 70px;
+  padding: 13px 0;
 }
 
+.wrapper button {
+  margin: 0 auto;
+  display: block;
+  width: 40%;
+  height: 30px;
+  font-size: 1.2em;
+  margin-top: 20px;
+}
+
+.list {
+  margin-top: 50px;
+  padding: 0;
+}
+
+.content {
+  margin: 0 0 10px 0;
+  border: 1px solid #58666e;
+  height: 40px;
+  padding: 11px;
+}
 
 /* --------------------footer-------------------- */
 footer {
