@@ -22,6 +22,7 @@ import './index.css';
 // }
 
 function Square(props) {
+  // console.log(props);
   return (
     <button className="square" onClick={props.onClick}>
     { props.value }
@@ -68,13 +69,14 @@ class Board extends React.Component {
 
 class Game extends React.Component {
   constructor(props) {
-    super(props); //???
+    super(props); // 컨스트럭터를 사용할 때는 항상 super 메소드를 호출해야 함
     this.state = {
       history: [{
-        squares: Array(9).fill(null)    // 최초의 squares에는 null로 채워져 있다.
+        squares: Array(9).fill(null),    // 최초의 squares에는 null로 채워져 있다.
       }],
       xIsNext: true,
-      stepNumber: 0
+      stepNumber: 0,
+      coordinate: [{col: 0, row: 0}]
     };
   }
 
@@ -85,18 +87,21 @@ class Game extends React.Component {
     const current = history[this.state.stepNumber]
     // current ------> 매 turn마다 생성되는 배열, 여기에 현재까지 마크된 값이 들어있음, length - 1을 해야 현재 index를 참조할 수 있다
     const winner = calculateWinner(current.squares);
-
-    console.log('current', current);
-    console.log('history', history);
+    const coordi = this.state.coordinate;
+    // console.log('current', current);
+    // console.log('history', history);
+    // console.log('history, coordi', history, coordi);
 
     const moves = history.map((step, move) => {       // step, move(jump할 곳을 나타내는 인자),_______moves에는 새로운 배열
+      // console.log(step, coordi[move].col, coordi[move].row);
       const desc = move ?
-      'Go to move #' + move :
+      `Go to move # ${move} Column ${coordi[move].col} Row ${coordi[move].row}` :
       'Go to game start';
-      //-------------------------button onClick jumpTo 메소드 등장 -----------------------
+      // const afterJumpto = 'active';
+
       return (
         <li key={move}>
-          <button onClick={() => this.jumpTo(move)}>{desc}</button>
+          <button onClick={() => this.jumpTo(step, move)}>{desc}</button>
         </li>
       );
     });
@@ -124,41 +129,70 @@ class Game extends React.Component {
     );
   }
   // --------------------- jumpTo --------------------------
+  jumpTo(step, move) {
 
-  jumpTo(step) {
     this.setState({
-      stepNumber: step,
-      xIsNext: (step % 2) === 0
-    })
+      stepNumber: move,
+      xIsNext: (move % 2) === 0
+    });
+    console.log('array',step);  // clicked history item
+    console.log('which one',move);  //
+
+    // for(let i = 0; i < 9; i++){
+    //   if(step ===)
+    // }
   }
 
     // ------------------- Board --------------> Game Component ---------------------
     handleClick(i) {      // 클릭된 square의 value를 인자로 받음
       const history = this.state.history.slice(0, this.state.stepNumber + 1);
-      console.log('stepNumber', this.state.stepNumber);
-      console.log('history in handleClick',history); // 메소드 내의 history는
+      // console.log('stepNumber', this.state.stepNumber);
+      // console.log('history in handleClick',history); // 메소드 내의 history는
       //  ----------- 전체 배열, 처음(0)부터
       const current = history[history.length - 1];  // current에 squares가 객체로 할당된다.
       const squaresV = current.squares.slice();   // 현재 squares의 복사본을 할당
       // const squaresV = this.state.squares.slice();   // state 관리, history 유지를 위해서 복사본 생성
       // squares[i] = 'X';  무조건 X만 표시됐었다!
+      // console.log(squaresV);
+      let coordinate = this.state.coordinate;
       if (calculateWinner(squaresV) || squaresV[i]) {
-        // squaresV를 인자로 받은 함수의 실행결과가 true이거나 클릭된 square가 true
+        // calculateWinner 함수의 실행결과가 true(승리)이거나 클릭된 square가 true
         return;
       }
-      squaresV[i] = this.state.xIsNext ? 'X' : 'O'
-      this.setState({
+      // squaresV[i] = this.state.xIsNext ? {turn: 'X'} : {turn: 'O'};
+      squaresV[i] = this.state.xIsNext ? 'X' : 'O';
+
+      const coordinator = (c, i) => {
+        let row = Math.floor(i / 3);    // row 구하기
+        let col = i % 3;    // col 구하기
+        coordinate = c.concat({col: col, row: row});
+        console.log('coordinate', coordinate);
+      }
+
+      if (i < 3) {  //  row: 0 일 경우
+        coordinator(coordinate, i);
+      }
+      else if (3 < i < 6) {
+        coordinator(coordinate, i);
+      }
+      else if (6 < i < 9) {
+        coordinator(coordinate, i);
+      }
+
+      this.setState({   // click 된 스퀘어에 대해서 처리 후 state를 update
         // squares: squaresV,      //  전자는 state의 프로퍼티인 squares, 후자는 handleClick의 지역변수
         history: history.concat([
           {squares: squaresV}
         ]),
         //  push와 달리 concat은 원본 배열을 수정하지 않는다. 그래서 current의 복사본이 squares 프로퍼티에 할당되고 concat으로 누적된다.
         stepNumber: history.length,
-        xIsNext: !this.state.xIsNext
-       })
-    }
-}
+        xIsNext: !this.state.xIsNext,
+        coordinate: coordinate
+       });
+    };
 
+}
+// ************** function calculateWinner ********************
 function calculateWinner(squares) {
   const lines = [
     [0, 1, 2],
@@ -178,6 +212,7 @@ function calculateWinner(squares) {
   }
   return null;
 }
+
 
 // **************************************** my-trial **************************************
 
