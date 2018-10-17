@@ -1,0 +1,28 @@
+/*  */
+@media only screen and (max-width: 1200px) {
+  form {
+    width: 100%;
+  }
+}
+@media only screen and (max-width: 1005px) {
+  .wrapper .getMeContents {
+    font-size: 14px;
+  }
+}
+
+/*  */
+@media only screen and (max-width: 913px) {
+  section #mytrial label {
+    font-size: 25px;
+  }
+}
+/* small phones to small tablet from 481 to 767 */
+@media only screen and (max-width: 773px) {
+  .wrapper button {
+    font-size: 10px;
+  }
+}
+/* small phones from 0 to 480*/
+@media only screen and (max-width: 480px) {
+
+}

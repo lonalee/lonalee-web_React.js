@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
+import './queries.css';
 
 // **********------------- class를 functional component로 전환 ------------------***************
 // class Square extends React.Component {
@@ -297,7 +298,7 @@ class Getcontents extends React.Component {
   render () {
     return (
       <div>
-      <button onClick={() => {
+      <button className="getMeContents" onClick={() => {
         this.getContents();
       }}>Get Me contents</button>
       </div>
